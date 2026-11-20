@@ -1,22 +1,14 @@
-## Development
+# Instrucciones para agentes de IA
 
-When starting the dev server, use background mode:
+Antes de modificar este proyecto, leé **[PORTFOLIO.md](./PORTFOLIO.md)**. Ahí están el diseño de origen en Figma, la estructura, los tokens de diseño, las reglas, las recetas paso a paso y la checklist de verificación.
 
-```
-astro dev --background
-```
+Resumen mínimo:
 
-Manage the background server with `astro dev stop`, `astro dev status`, and `astro dev logs`.
+- Astro 5 + Tailwind CSS 4, sitio estático de una página, sin JavaScript en el cliente.
+- Usá los tokens de color de `src/styles/global.css` (`bg-ink`, `text-muted`…), nunca hex sueltos.
+- Contenido dentro de `src/components/sections/*.astro`; orden de secciones en `src/pages/index.astro`.
+- Verificá con `npm run build` y revisando a 1440px y 375px.
+- No actualices Astro a v7 sin actualizar Node (requiere ≥ 22.23.4). Astro 5 no tiene `astro dev --background`.
+- Si cambiás estructura, tokens o recetas, actualizá `PORTFOLIO.md`.
 
-## Documentation
-
-Full documentation: https://docs.astro.build
-
-Consult these guides before working on related tasks:
-
-- [Adding pages, dynamic routes, or middleware](https://docs.astro.build/en/guides/routing/)
-- [Working with Astro components](https://docs.astro.build/en/basics/astro-components/)
-- [Using React, Vue, Svelte, or other framework components](https://docs.astro.build/en/guides/framework-components/)
-- [Adding or managing content](https://docs.astro.build/en/guides/content-collections/)
-- [Adding styles or using Tailwind](https://docs.astro.build/en/guides/styling/)
-- [Supporting multiple languages](https://docs.astro.build/en/guides/internationalization/)
+Documentación de Astro: https://docs.astro.build
