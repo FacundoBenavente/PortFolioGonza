@@ -1,0 +1,52 @@
+---
+import SectionIndex from '../SectionIndex.astro';
+
+// Dirección ilustrativa del diseño: reemplazar por el contacto real
+const email = 'hola@ejemplo.com';
+---
+
+<footer id="contacto" class="scroll-mt-4 bg-ink text-paper">
+  <div class="container-page flex flex-col gap-12 pt-16 pb-8">
+    <SectionIndex number="06" label="CONTACTO / PRÓXIMA CONVERSACIÓN" dark />
+
+    <div class="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
+      <div class="flex flex-col gap-6 lg:w-[785px]">
+        <h2 class="text-[clamp(48px,5.8vw,84px)] leading-[0.98] font-medium">
+          ¿Qué podemos<br />explorar juntos?
+        </h2>
+        <p class="max-w-[600px] text-lg leading-[1.5] text-fog">
+          Para compartir una idea, intercambiar preguntas o conversar sobre datos, diseño y tecnología.
+        </p>
+      </div>
+
+      <div class="flex w-full max-w-[400px] flex-col gap-4 pb-1.5 lg:w-[400px] lg:shrink-0">
+        <p class="font-mono text-[11px] text-fog">CONTACTO DE EJEMPLO / REEMPLAZAR</p>
+        <a
+          href={`mailto:${email}`}
+          class="group flex items-center justify-between border-b border-cyan pb-4 text-cyan"
+        >
+          <span class="text-[clamp(22px,2vw,28px)]">{email}</span>
+          <span
+            class="text-[32px] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+            aria-hidden="true">↗</span
+          >
+        </a>
+        <p class="text-sm leading-[1.5] text-fog">
+          Esta dirección es ilustrativa. El canal personal está pendiente de incorporar.
+        </p>
+      </div>
+    </div>
+
+    <!-- Pie de página -->
+    <div
+      class="flex flex-col gap-4 border-t border-graphite pt-8 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="text-xl font-bold">Tu nombre © 2026</p>
+      <div class="flex items-center gap-3">
+        <p class="font-mono text-[11px] text-fog">ENTENDER · CREAR · ITERAR</p>
+        <span class="h-[15px] w-2 bg-lime motion-safe:animate-blink" aria-hidden="true"></span>
+      </div>
+      <a href="#top" class="font-mono text-[11px] hover:underline">VOLVER ARRIBA ↑</a>
+    </div>
+  </div>
+</footer>

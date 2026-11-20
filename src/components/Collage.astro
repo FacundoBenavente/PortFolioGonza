@@ -1,0 +1,105 @@
+---
+/**
+ * Collage de recortes (fotos con marco, cintas y etiquetas) del diseño.
+ * Todas las posiciones y tamaños se expresan en porcentaje del lienzo original
+ * de Figma, y los textos en unidades de contenedor (cqw), así el collage
+ * escala proporcionalmente en cualquier ancho.
+ */
+import type { CollageItem } from './collage';
+
+interface Props {
+  /** Ancho y alto del lienzo en Figma */
+  width: number;
+  height: number;
+  items: CollageItem[];
+  class?: string;
+}
+
+const { width, height, items, class: className } = Astro.props;
+
+/** px del diseño → unidades de contenedor */
+const cq = (px: number) => `${((px / width) * 100).toFixed(3)}cqw`;
+const pct = (n: number) => `${n}%`;
+const photoPad = cq(8);
+---
+
+<div
+  class:list={['relative w-full [container-type:inline-size]', className]}
+  style={{ aspectRatio: `${width} / ${height}` }}
+>
+  {
+    items.map((item) => {
+      if (item.kind === 'photo') {
+        return (
+          <div
+            class="absolute flex bg-white shadow-photo"
+            style={{
+              left: pct(item.left),
+              top: pct(item.top),
+              width: pct(item.width),
+              height: pct(item.height),
+              padding: photoPad,
+              rotate: `${item.rotate}deg`,
+            }}
+          >
+            <img
+              src={item.src}
+              alt={item.alt}
+              loading="lazy"
+              decoding="async"
+              class="size-full object-cover"
+            />
+          </div>
+        );
+      }
+      if (item.kind === 'tape') {
+        return (
+          <div
+            aria-hidden="true"
+            class="absolute bg-tape"
+            style={{
+              left: pct(item.left),
+              top: pct(item.top),
+              width: pct(item.width),
+              height: pct(item.height),
+              rotate: `${item.rotate}deg`,
+              opacity: item.opacity ?? 1,
+            }}
+          />
+        );
+      }
+      if (item.kind === 'chip') {
+        return (
+          <p
+            class:list={[
+              'absolute font-mono font-bold whitespace-nowrap text-ink',
+              item.color === 'cyan' ? 'bg-cyan' : 'bg-magenta',
+            ]}
+            style={{
+              left: pct(item.cx),
+              top: pct(item.cy),
+              translate: '-50% -50%',
+              rotate: `${item.rotate}deg`,
+              fontSize: cq(item.fontPx),
+              padding: `${cq(item.padYPx)} ${cq(item.padXPx)}`,
+            }}
+          >
+            {item.text}
+          </p>
+        );
+      }
+      return (
+        <p
+          class="absolute font-mono whitespace-nowrap text-muted"
+          style={{
+            left: pct(item.left),
+            top: pct(item.top),
+            fontSize: `max(9px, ${cq(item.fontPx)})`,
+          }}
+        >
+          {item.text}
+        </p>
+      );
+    })
+  }
+</div>

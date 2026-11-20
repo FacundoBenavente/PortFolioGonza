@@ -1,0 +1,85 @@
+---
+import SectionIndex from '../SectionIndex.astro';
+
+const proyectos = [
+  {
+    numero: '01',
+    titulo: 'Proyecto 01',
+    imagen: '/images/proyecto-01.jpg',
+    alt: 'Pantalla con código fuente',
+    referencia: 'REFERENCIA VISUAL · CÓDIGO',
+  },
+  {
+    numero: '02',
+    titulo: 'Proyecto 02',
+    imagen: '/images/proyecto-02.jpg',
+    alt: 'Monitor con un tablero de métricas y gráficos',
+    referencia: 'REFERENCIA VISUAL · DATOS',
+  },
+  {
+    numero: '03',
+    titulo: 'Proyecto 03',
+    imagen: '/images/proyecto-03.png',
+    alt: 'Manos sobre un teclado frente a interfaces holográficas',
+    referencia: 'REFERENCIA VISUAL · TECNOLOGÍA',
+  },
+];
+---
+
+<section id="proyectos" class="scroll-mt-4 bg-white">
+  <div class="container-page flex flex-col gap-9 pt-16 pb-14 lg:pt-[72px] lg:pb-16">
+    <SectionIndex number="02" label="SELECCIÓN / PROYECTOS" />
+
+    <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <h2 class="text-[clamp(40px,4.5vw,64px)] leading-[1.05] font-medium lg:w-[670px]">
+        Ideas que toman forma.
+      </h2>
+      <div class="flex flex-col gap-2 lg:w-[370px]">
+        <p class="font-mono text-[13px] font-bold">3 PROYECTOS PRODUCIDOS</p>
+        <p class="text-[15px] leading-[1.4] text-muted">
+          Tres espacios reservados para contar el trabajo. Los detalles aún están por completar.
+        </p>
+      </div>
+    </div>
+
+    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {
+        proyectos.map((p) => (
+          <li class="group flex flex-col">
+            <div class="relative h-[320px] overflow-hidden bg-stone p-5">
+              <img
+                src={p.imagen}
+                alt={p.alt}
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
+              <span class="relative inline-block bg-paper px-3.5 py-2 font-mono text-sm">{p.numero}</span>
+              <span class="absolute bottom-3 left-3 bg-ink px-3 py-2 font-mono text-[9px] text-white">
+                {p.referencia}
+              </span>
+            </div>
+            <div class="flex flex-col gap-[18px] py-6">
+              <p class="label text-muted">DOCUMENTACIÓN PENDIENTE</p>
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="text-[32px] font-medium">{p.titulo}</h3>
+                <span class="font-mono text-2xl text-muted" aria-hidden="true">
+                  [+]
+                </span>
+              </div>
+              <p class="text-[17px] leading-[1.5] text-muted">
+                Nombre, contexto y proceso por incorporar. Rol, aportes y resultado por documentar.
+              </p>
+              <div class="h-px w-full bg-line" />
+              <p class="font-mono text-[11px] text-muted">FICHA POR COMPLETAR / SIN CASO PUBLICADO</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="label text-muted">
+      ↳ Imágenes del universo visual personal; no son capturas ni resultados de estos proyectos.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,75 @@
+---
+import SectionIndex from '../SectionIndex.astro';
+
+const disciplinas = [
+  {
+    etiqueta: '01 / ANALIZAR',
+    titulo: 'Datos + matemática',
+    texto:
+      'Análisis y ciencia de datos como áreas de estudio. La matemática como base para formular preguntas, buscar patrones y razonar con precisión.',
+  },
+  {
+    etiqueta: '02 / DAR FORMA',
+    titulo: 'Diseño UX/UI + 3D',
+    texto:
+      'Áreas de práctica e interés: pensar experiencias digitales, explorar interfaces y experimentar con la forma, el espacio y la representación.',
+  },
+  {
+    etiqueta: '03 / CONSTRUIR',
+    titulo: 'Programación + front-end',
+    texto:
+      'El código como medio de exploración. Me interesa conectar la intención del diseño con la lógica de una interfaz y su construcción.',
+  },
+  {
+    etiqueta: '04 / EXPLORAR',
+    titulo: 'Videojuegos + tecnología',
+    texto:
+      'Sistemas, reglas e interacción. Un lugar para observar cómo se combinan la estrategia, el diseño y las decisiones de quien juega.',
+  },
+];
+---
+
+<section id="disciplinas" class="scroll-mt-4 bg-ink text-paper">
+  <div class="container-page flex flex-col gap-12 py-16 lg:py-20">
+    <SectionIndex number="03" label="INTERESES / ÁREAS DE PRÁCTICA" dark />
+
+    <div class="flex flex-col gap-14 lg:flex-row lg:gap-20">
+      <!-- Introducción a las disciplinas -->
+      <div class="flex flex-col gap-7 lg:w-[430px] lg:shrink-0">
+        <h2 class="text-[clamp(40px,4.5vw,64px)] leading-[1.02] font-medium">
+          El cruce es<br />el punto.
+        </h2>
+        <p class="text-lg leading-[1.55] text-fog">
+          No son compartimentos separados. Son distintas herramientas para acercarme a un mismo
+          problema.
+        </p>
+
+        <!-- Esquema de conexiones -->
+        <div class="relative h-[174px] w-[370px] max-w-full font-mono text-[11px] text-fog" aria-hidden="true">
+          <span class="absolute top-[76px] left-[26px] h-px w-[300px] bg-graphite"></span>
+          <span class="absolute top-[69px] left-5 size-3.5 bg-cyan"></span>
+          <span class="absolute top-[69px] left-[170px] size-3.5 bg-magenta"></span>
+          <span class="absolute top-[69px] left-[320px] size-3.5 bg-lime"></span>
+          <span class="absolute top-[104px] left-0">LÓGICA</span>
+          <span class="absolute top-9 left-[149px]">FORMA</span>
+          <span class="absolute top-[104px] left-[294px]">SISTEMA</span>
+        </div>
+
+        <p class="font-mono text-[11px] text-lime">[ EN FORMACIÓN · EN MOVIMIENTO ]</p>
+      </div>
+
+      <!-- Áreas de exploración -->
+      <ul class="flex min-w-0 flex-1 flex-col border-b border-graphite">
+        {
+          disciplinas.map((d) => (
+            <li class="flex flex-col gap-3.5 border-t border-graphite pt-[22px] pb-6">
+              <p class="font-mono text-[10px] text-cyan">{d.etiqueta}</p>
+              <h3 class="text-[clamp(24px,2.2vw,30px)] font-medium">{d.titulo}</h3>
+              <p class="leading-[1.5] text-fog">{d.texto}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

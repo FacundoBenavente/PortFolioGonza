@@ -1,0 +1,39 @@
+---
+import SectionIndex from '../SectionIndex.astro';
+---
+
+<section id="sobre-mi" class="scroll-mt-4 bg-paper">
+  <div class="container-page flex flex-col gap-12 py-16 lg:flex-row lg:gap-20 lg:py-20">
+    <!-- Margen editorial -->
+    <div class="flex flex-col gap-8 lg:w-[300px] lg:shrink-0">
+      <SectionIndex number="01" label="SOBRE MÍ / MANIFIESTO" />
+      <p class="font-mono text-[13px] leading-[1.7] text-muted">
+        No elegir una sola mirada.<br />
+        Conectar lo que aprendo.
+      </p>
+      <div class="flex gap-2" aria-hidden="true">
+        <span class="size-[18px] bg-cyan"></span>
+        <span class="size-[18px] bg-magenta"></span>
+        <span class="size-[18px] bg-lime"></span>
+      </div>
+    </div>
+
+    <!-- Declaración -->
+    <div class="flex min-w-0 flex-1 flex-col gap-7">
+      <h2 class="text-[clamp(30px,3.5vw,49px)] leading-[1.12] font-normal">
+        Me gustan las preguntas que no se resuelven desde una sola disciplina.
+      </h2>
+      <div class="flex flex-col gap-6 text-lg leading-[1.55] text-muted md:flex-row md:gap-10">
+        <p class="flex-1">
+          En la matemática encuentro estructura. En los datos, preguntas. En el diseño y el código,
+          formas de convertir una idea en algo que se pueda explorar.
+        </p>
+        <p class="flex-1">
+          Mi punto de partida es la curiosidad: observar, probar y volver a pensar. Este portfolio
+          reúne lo que produzco, lo que estudio y lo que todavía quiero descubrir.
+        </p>
+      </div>
+      <p class="label text-muted">ENTENDER · CREAR · ITERAR</p>
+    </div>
+  </div>
+</section>

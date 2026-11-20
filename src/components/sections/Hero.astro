@@ -1,0 +1,122 @@
+---
+import Collage from '../Collage.astro';
+import type { CollageItem } from '../collage';
+
+const navLinks = [
+  { label: 'Sobre mí', href: '#sobre-mi' },
+  { label: 'Proyectos', href: '#proyectos' },
+  { label: 'Disciplinas', href: '#disciplinas' },
+  { label: 'Trayectoria', href: '#trayectoria' },
+];
+
+// Lienzo del collage en Figma: 783 × 445
+const collage: CollageItem[] = [
+  {
+    kind: 'photo',
+    src: '/images/hero-tierra.jpg',
+    alt: 'La Tierra de noche vista desde el espacio, con las luces de las ciudades',
+    left: 16.775,
+    top: 4.598,
+    width: 77.267,
+    height: 71.236,
+    rotate: -2,
+  },
+  {
+    kind: 'photo',
+    src: '/images/hero-portatil.jpg',
+    alt: 'Notebook entreabierta iluminada en la oscuridad',
+    left: 1.522,
+    top: 46.913,
+    width: 43.55,
+    height: 52.81,
+    rotate: 3,
+  },
+  { kind: 'tape', left: 45.12, top: 0.584, width: 12.771, height: 5.618, rotate: 3, opacity: 0.85 },
+  {
+    kind: 'chip',
+    text: 'DATOS → DECISIONES',
+    cx: 60.723,
+    cy: 76.222,
+    rotate: -2,
+    color: 'cyan',
+    fontPx: 20,
+    padXPx: 22,
+    padYPx: 17,
+  },
+  { kind: 'note', text: 'observar antes de asumir_', left: 49.042, top: 88.764, fontPx: 10 },
+];
+---
+
+<header class="bg-stone">
+  <div class="container-page flex flex-col">
+    <!-- Navegación principal -->
+    <nav
+      class="flex h-20 items-center justify-between gap-6 border-b border-ink lg:h-24"
+      aria-label="Navegación principal"
+    >
+      <a href="#top" class="text-lg font-bold whitespace-nowrap md:text-xl">Gonzalo Rey Balmaceda</a>
+      <div class="flex items-center gap-8">
+        <ul class="hidden items-center gap-8 md:flex">
+          {
+            navLinks.map((link) => (
+              <li>
+                <a
+                  href={link.href}
+                  class="font-mono text-xs underline-offset-4 transition-colors hover:text-muted hover:underline"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+        <a
+          href="#contacto"
+          class="bg-ink px-5 py-3.5 font-mono text-xs whitespace-nowrap text-white transition-colors hover:bg-graphite"
+        >
+          Hablemos ↗
+        </a>
+      </div>
+    </nav>
+
+    <!-- Ficha de apertura -->
+    <div class="label flex flex-wrap justify-between gap-x-6 gap-y-1 pt-7.5 pb-3.5 text-muted">
+      <p>PORTFOLIO PERSONAL / PERFIL EN FORMACIÓN</p>
+      <p>EDICIÓN 2026 — ES</p>
+    </div>
+
+    <h1 class="text-[clamp(52px,11.5vw,166px)] leading-none font-bold">CURIOSIDAD</h1>
+
+    <!-- Introducción y collage -->
+    <div class="flex flex-col gap-11 pt-8 pb-10 lg:flex-row lg:items-start lg:pb-[11px]">
+      <div class="flex flex-col gap-6 pt-3 lg:w-[485px] lg:shrink-0">
+        <p class="text-[clamp(36px,4vw,52px)] leading-[1.02] font-medium">
+          Entre la lógica y la imaginación.
+        </p>
+        <p class="max-w-[430px] text-lg leading-[1.5]">
+          Soy Gonzalo. Estoy construyendo un camino entre los datos, el diseño y la programación. Me
+          interesa entender cómo funcionan las cosas y explorar cómo podrían ser.
+        </p>
+        <div class="flex flex-wrap items-center gap-6">
+          <a
+            href="#proyectos"
+            class="bg-cyan px-6 py-[17px] font-mono text-xs font-bold transition-colors hover:bg-ink hover:text-cyan"
+          >
+            EXPLORAR PROYECTOS ↓
+          </a>
+          <p class="label text-muted">SIEMPRE APRENDIENDO</p>
+        </div>
+      </div>
+
+      <Collage width={783} height={445} items={collage} class="lg:flex-1" />
+    </div>
+
+    <!-- Cierre de presentación -->
+    <div
+      class="flex min-h-[74px] flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-ink py-4 font-mono text-[11px]"
+    >
+      <p class="leading-[1.5] text-muted">ANÁLISIS DE DATOS / DISEÑO UX/UI / 3D / FRONT-END</p>
+      <a href="#sobre-mi" class="hover:underline">DESLIZÁ PARA CONOCERME ↓</a>
+    </div>
+  </div>
+</header>
