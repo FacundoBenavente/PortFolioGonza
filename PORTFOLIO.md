@@ -271,6 +271,8 @@ Verificación realizada (2026-11-26): a 1440px, las alturas de sección quedan a
 ## 10. Notas técnicas y trampas conocidas
 
 - **Versión de Node:** Astro 7 exige Node ≥ 22.23.4. La máquina original tiene Node 22.17, por eso Astro está fijado en 5.18. Para actualizar: subí Node a la última LTS y después corré `npm install astro@latest`. Revisá la guía de migración de Astro.
+- **Deploy:** Vercel, importando el repo de GitHub, sin configuración extra (Astro se detecta solo). La URL canónica sale de `VERCEL_PROJECT_PRODUCTION_URL` o de `SITE_URL` (ver `astro.config.mjs`). No hay página 404 propia porque no está en Figma: Vercel muestra la suya.
+- **Favicon:** `public/favicon.svg` y `favicon.ico` son los tres cuadraditos del diseño (teal · pink · teal) sobre `night`; reemplazaron al de Astro.
 - **Astro 5 no tiene `astro dev --background`.** Para correr el servidor en segundo plano, usá la herramienta de tu entorno.
 - **Tipos en componentes `.astro`:** exportar tipos con uniones de varias líneas desde el frontmatter rompe el build. Por eso el tipo del collage vive en `collage.ts`.
 - **Tamaños de texto a medida e interlineado:** `text-[20px]` no define interlineado, así que hereda el `normal` del `html`. Si un texto necesita otro, agregá `leading-[…]`.

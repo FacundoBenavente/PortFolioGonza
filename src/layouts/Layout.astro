@@ -10,6 +10,9 @@ const {
   title = 'Gonzalo Rey Balmaceda — Portfolio',
   description = 'Portfolio personal de Gonzalo Rey Balmaceda: análisis de datos, diseño UX/UI, 3D y front-end.',
 } = Astro.props;
+
+// Con `site` configurado (en Vercel sale solo, ver astro.config.mjs) se agrega la URL canónica
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
 ---
 
 <!doctype html>
@@ -19,8 +22,17 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#090d14" />
+    <meta name="color-scheme" content="dark" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content="Gonzalo Rey Balmaceda — Portfolio" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    {canonical && <meta property="og:url" content={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <title>{title}</title>
   </head>
   <body id="top">
