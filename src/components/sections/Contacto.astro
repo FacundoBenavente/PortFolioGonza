@@ -1,52 +1,49 @@
 ---
 import SectionIndex from '../SectionIndex.astro';
+import Flecha from '../Flecha.astro';
 
-// Dirección ilustrativa del diseño: reemplazar por el contacto real
-const email = 'hola@ejemplo.com';
+const email = 'greybalmaceda@gmail.com';
 ---
 
-<footer id="contacto" class="scroll-mt-4 bg-ink text-paper">
+<footer id="contacto" class="scroll-mt-4 bg-night">
   <div class="container-page flex flex-col gap-12 pt-16 pb-8">
-    <SectionIndex number="06" label="CONTACTO / PRÓXIMA CONVERSACIÓN" dark />
+    <SectionIndex number="06" label="CONTACTO" />
 
     <div class="flex flex-col gap-12 lg:flex-row lg:items-end lg:justify-between">
-      <div class="flex flex-col gap-6 lg:w-[785px]">
-        <h2 class="text-[clamp(48px,5.8vw,84px)] leading-[0.98] font-medium">
-          ¿Qué podemos<br />explorar juntos?
+      <div class="flex flex-col gap-6 lg:w-[785px] lg:gap-9">
+        <h2 class="text-[clamp(48px,5.84vw,84px)] leading-[0.98]">
+          ¿Qué podemos<br />explorar <span class="text-pink">juntos?</span>
         </h2>
-        <p class="max-w-[600px] text-lg leading-[1.5] text-fog">
+        <p class="max-w-[600px] text-lg leading-[1.5]">
           Para compartir una idea, intercambiar preguntas o conversar sobre datos, diseño y tecnología.
         </p>
       </div>
 
       <div class="flex w-full max-w-[400px] flex-col gap-4 pb-1.5 lg:w-[400px] lg:shrink-0">
-        <p class="font-mono text-[11px] text-fog">CONTACTO DE EJEMPLO / REEMPLAZAR</p>
+        <p class="label text-mist">CONTACTO</p>
         <a
           href={`mailto:${email}`}
-          class="group flex items-center justify-between border-b border-cyan pb-4 text-cyan"
+          class="group flex items-center justify-between gap-4 border-b border-line pb-4 text-teal"
         >
-          <span class="text-[clamp(22px,2vw,28px)]">{email}</span>
+          <span class="min-w-0 truncate text-[clamp(20px,1.8vw,25px)]">{email}</span>
           <span
-            class="text-[32px] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-            aria-hidden="true">↗</span
+            class="text-[32px] text-snow transition-transform motion-safe:group-hover:translate-x-1 motion-safe:group-hover:-translate-y-1"
+            aria-hidden="true"><Flecha direccion="diagonal" grosor={1.6} /></span
           >
         </a>
-        <p class="text-sm leading-[1.5] text-fog">
-          Esta dirección es ilustrativa. El canal personal está pendiente de incorporar.
-        </p>
       </div>
     </div>
 
     <!-- Pie de página -->
     <div
-      class="flex flex-col gap-4 border-t border-graphite pt-8 sm:flex-row sm:items-center sm:justify-between"
+      class="flex flex-col gap-4 border-t border-line pt-8 sm:flex-row sm:items-center sm:justify-between"
     >
-      <p class="text-xl font-bold">Tu nombre © 2026</p>
+      <p class="text-xl font-bold">Gonzalo Rey Balmaceda © 2026</p>
       <div class="flex items-center gap-3">
-        <p class="font-mono text-[11px] text-fog">ENTENDER · CREAR · ITERAR</p>
-        <span class="h-[15px] w-2 bg-lime motion-safe:animate-blink" aria-hidden="true"></span>
+        <p class="text-[11px] text-mist">ENTENDER · CREAR · ITERAR</p>
+        <span class="h-[15px] w-2 bg-teal motion-safe:animate-blink" aria-hidden="true"></span>
       </div>
-      <a href="#top" class="font-mono text-[11px] hover:underline">VOLVER ARRIBA ↑</a>
+      <a href="#top" class="text-[11px] text-mist transition-colors hover:text-snow">VOLVER ARRIBA ↑</a>
     </div>
   </div>
 </footer>

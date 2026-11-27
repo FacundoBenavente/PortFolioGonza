@@ -1,0 +1,35 @@
+---
+/**
+ * Flechas → y ↗ dibujadas en SVG. La versión web de Inter (fontsource) no trae
+ * esos caracteres y el navegador los dibujaba con otra fuente, más finos y corridos.
+ * Miden 1em y toman el color del texto (`currentColor`). ↑ y ↓ sí están en Inter.
+ */
+interface Props {
+  direccion: 'derecha' | 'diagonal';
+  /** Grosor del trazo en unidades del viewBox de 24: ~2 para texto normal, ~2.6 para semibold */
+  grosor?: number;
+  class?: string;
+}
+
+const { direccion, grosor = 2, class: className } = Astro.props;
+---
+
+<svg
+  viewBox="0 0 24 24"
+  width="1em"
+  height="1em"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={grosor}
+  stroke-linejoin="miter"
+  class:list={['inline-block shrink-0 align-[-0.12em]', className]}
+  aria-hidden="true"
+>
+  {
+    direccion === 'derecha' ? (
+      <path d="M3 12h17M13.5 5.5 20 12l-6.5 6.5" />
+    ) : (
+      <path d="M6 18 18 6M8.5 6H18v9.5" />
+    )
+  }
+</svg>

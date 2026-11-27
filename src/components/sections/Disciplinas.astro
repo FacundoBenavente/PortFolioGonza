@@ -29,43 +29,41 @@ const disciplinas = [
 ];
 ---
 
-<section id="disciplinas" class="scroll-mt-4 bg-ink text-paper">
+<section id="disciplinas" class="scroll-mt-4 bg-surface">
   <div class="container-page flex flex-col gap-12 py-16 lg:py-20">
-    <SectionIndex number="03" label="INTERESES / ÁREAS DE PRÁCTICA" dark />
+    <SectionIndex number="03" label="INTERESES / ÁREAS DE PRÁCTICA" />
 
     <div class="flex flex-col gap-14 lg:flex-row lg:gap-20">
       <!-- Introducción a las disciplinas -->
       <div class="flex flex-col gap-7 lg:w-[430px] lg:shrink-0">
-        <h2 class="text-[clamp(40px,4.5vw,64px)] leading-[1.02] font-medium">
+        <h2 class="text-[clamp(40px,4.5vw,64px)] leading-[1.02] text-teal">
           El cruce es<br />el punto.
         </h2>
-        <p class="text-lg leading-[1.55] text-fog">
+        <p class="text-lg leading-[1.55]">
           No son compartimentos separados. Son distintas herramientas para acercarme a un mismo
           problema.
         </p>
 
-        <!-- Esquema de conexiones -->
-        <div class="relative h-[174px] w-[370px] max-w-full font-mono text-[11px] text-fog" aria-hidden="true">
-          <span class="absolute top-[76px] left-[26px] h-px w-[300px] bg-graphite"></span>
-          <span class="absolute top-[69px] left-5 size-3.5 bg-cyan"></span>
-          <span class="absolute top-[69px] left-[170px] size-3.5 bg-magenta"></span>
-          <span class="absolute top-[69px] left-[320px] size-3.5 bg-lime"></span>
-          <span class="absolute top-[104px] left-0">LÓGICA</span>
-          <span class="absolute top-9 left-[149px]">FORMA</span>
-          <span class="absolute top-[104px] left-[294px]">SISTEMA</span>
+        <!-- Esquema de conexiones: 370 × 174 en Figma; posiciones horizontales en % para que entre en celular -->
+        <div class="relative h-[174px] w-[370px] max-w-full text-[11px] text-mist" aria-hidden="true">
+          <span class="absolute top-[76px] left-[7.03%] h-px w-[81.08%] bg-line"></span>
+          <span class="absolute top-[69px] left-[5.41%] size-3.5 bg-teal"></span>
+          <span class="absolute top-[69px] left-[45.95%] size-3.5 bg-pink"></span>
+          <span class="absolute top-[69px] left-[86.49%] size-3.5 bg-teal"></span>
+          <span class="absolute top-[104px] left-[1.62%]">LÓGICA</span>
+          <span class="absolute top-9 left-[42.43%]">FORMA</span>
+          <span class="absolute top-[104px] left-[81.89%]">SISTEMA</span>
         </div>
-
-        <p class="font-mono text-[11px] text-lime">[ EN FORMACIÓN · EN MOVIMIENTO ]</p>
       </div>
 
       <!-- Áreas de exploración -->
-      <ul class="flex min-w-0 flex-1 flex-col border-b border-graphite">
+      <ul class="flex min-w-0 flex-1 flex-col border-b border-line">
         {
           disciplinas.map((d) => (
-            <li class="flex flex-col gap-3.5 border-t border-graphite pt-[22px] pb-6">
-              <p class="font-mono text-[10px] text-cyan">{d.etiqueta}</p>
-              <h3 class="text-[clamp(24px,2.2vw,30px)] font-medium">{d.titulo}</h3>
-              <p class="leading-[1.5] text-fog">{d.texto}</p>
+            <li class="flex flex-col gap-3.5 border-t border-line pt-[22px] pb-6">
+              <p class="text-[10px] text-teal">{d.etiqueta}</p>
+              <h3 class="text-[clamp(24px,2.2vw,30px)]">{d.titulo}</h3>
+              <p class="leading-[1.5]">{d.texto}</p>
             </li>
           ))
         }

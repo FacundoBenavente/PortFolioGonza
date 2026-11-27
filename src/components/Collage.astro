@@ -1,11 +1,12 @@
 ---
 /**
- * Collage de recortes (fotos con marco, cintas y etiquetas) del diseño.
+ * Collage de recortes (fotos con marco y etiquetas) del diseño.
  * Todas las posiciones y tamaños se expresan en porcentaje del lienzo original
  * de Figma, y los textos en unidades de contenedor (cqw), así el collage
  * escala proporcionalmente en cualquier ancho.
  */
 import type { CollageItem } from './collage';
+import Flecha from './Flecha.astro';
 
 interface Props {
   /** Ancho y alto del lienzo en Figma */
@@ -32,7 +33,7 @@ const photoPad = cq(8);
       if (item.kind === 'photo') {
         return (
           <div
-            class="absolute flex bg-white shadow-photo"
+            class="absolute flex bg-surface shadow-photo"
             style={{
               left: pct(item.left),
               top: pct(item.top),
@@ -42,55 +43,51 @@ const photoPad = cq(8);
               rotate: `${item.rotate}deg`,
             }}
           >
-            <img
-              src={item.src}
-              alt={item.alt}
-              loading="lazy"
-              decoding="async"
-              class="size-full object-cover"
-            />
+            <div class="relative size-full overflow-hidden">
+              <img
+                src={item.src}
+                alt={item.alt}
+                loading="lazy"
+                decoding="async"
+                class:list={['absolute max-w-none', !item.recorte && 'inset-0 size-full object-cover']}
+                style={
+                  item.recorte && {
+                    left: pct(item.recorte.x * 100),
+                    top: pct(item.recorte.y * 100),
+                    width: pct(item.recorte.w * 100),
+                    height: pct(item.recorte.h * 100),
+                  }
+                }
+              />
+            </div>
           </div>
-        );
-      }
-      if (item.kind === 'tape') {
-        return (
-          <div
-            aria-hidden="true"
-            class="absolute bg-tape"
-            style={{
-              left: pct(item.left),
-              top: pct(item.top),
-              width: pct(item.width),
-              height: pct(item.height),
-              rotate: `${item.rotate}deg`,
-              opacity: item.opacity ?? 1,
-            }}
-          />
         );
       }
       if (item.kind === 'chip') {
         return (
           <p
             class:list={[
-              'absolute font-mono font-bold whitespace-nowrap text-ink',
-              item.color === 'cyan' ? 'bg-cyan' : 'bg-magenta',
+              'absolute flex items-center justify-center border bg-surface whitespace-nowrap',
+              item.color === 'teal' ? 'border-teal text-teal' : 'border-pink text-pink',
             ]}
             style={{
               left: pct(item.cx),
               top: pct(item.cy),
+              width: cq(item.widthPx),
+              height: cq(item.heightPx),
               translate: '-50% -50%',
               rotate: `${item.rotate}deg`,
               fontSize: cq(item.fontPx),
-              padding: `${cq(item.padYPx)} ${cq(item.padXPx)}`,
+              fontWeight: item.weight,
             }}
           >
-            {item.text}
+            {item.text.split(' → ').map((parte, i) => (i ? [<Flecha direccion="derecha" grosor={2.6} class="mx-[0.3em]" />, parte] : parte))}
           </p>
         );
       }
       return (
         <p
-          class="absolute font-mono whitespace-nowrap text-muted"
+          class="absolute whitespace-nowrap text-mist"
           style={{
             left: pct(item.left),
             top: pct(item.top),

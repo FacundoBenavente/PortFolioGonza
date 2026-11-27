@@ -8,15 +8,11 @@ export type CollageItem =
       width: number;
       height: number;
       rotate: number;
-    }
-  | {
-      kind: 'tape';
-      left: number;
-      top: number;
-      width: number;
-      height: number;
-      rotate: number;
-      opacity?: number;
+      /**
+       * Recorte de Figma (relleno "Crop"): tamaño y posición de la imagen respecto
+       * del área visible, en fracciones (w 1.2 = 120% del ancho). Sin recorte, cubre centrada.
+       */
+      recorte?: { x: number; y: number; w: number; h: number };
     }
   | {
       kind: 'chip';
@@ -25,11 +21,12 @@ export type CollageItem =
       cx: number;
       cy: number;
       rotate: number;
-      color: 'cyan' | 'magenta';
-      /** Tamaño de fuente y padding en px del diseño original */
+      color: 'teal' | 'pink';
+      /** Tamaño de la caja, tamaño de fuente y peso, en px del diseño original */
+      widthPx: number;
+      heightPx: number;
       fontPx: number;
-      padXPx: number;
-      padYPx: number;
+      weight: 600 | 700;
     }
   | {
       kind: 'note';

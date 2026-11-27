@@ -1,15 +1,15 @@
 ---
+/** Índice de sección: "01 ─── SOBRE MÍ" (número y línea en teal, etiqueta en mist). */
 interface Props {
   number: string;
   label: string;
-  dark?: boolean;
 }
 
-const { number, label, dark = false } = Astro.props;
+const { number, label } = Astro.props;
 ---
 
 <div class="flex items-center gap-4">
-  <span class:list={['font-mono text-[11px]', dark ? 'text-cyan' : 'text-ink']}>{number}</span>
-  <span class="h-[3px] w-8 bg-cyan" aria-hidden="true"></span>
-  <span class:list={['label', dark ? 'text-fog' : 'text-muted']}>{label}</span>
+  <span class="text-[11px] text-teal">{number}</span>
+  <span class="h-[3px] w-8 bg-teal" aria-hidden="true"></span>
+  <span class="label text-mist">{label}</span>
 </div>

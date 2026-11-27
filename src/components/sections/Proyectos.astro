@@ -4,82 +4,81 @@ import SectionIndex from '../SectionIndex.astro';
 const proyectos = [
   {
     numero: '01',
-    titulo: 'Proyecto 01',
-    imagen: '/images/proyecto-01.jpg',
-    alt: 'Pantalla con código fuente',
-    referencia: 'REFERENCIA VISUAL · CÓDIGO',
+    anio: '3ER AÑO - 2024',
+    titulo: 'CaveDepths',
+    imagen: '/images/proyecto-cavedepths.png',
+    alt: 'Pantalla de inicio de CaveDepths: el título en letras de piedra y el botón "Iniciar" dentro de una cueva',
+    descripcion:
+      'CaveDepths es un juego estilo roguelike en el cual tenés que ir superando diferentes niveles para poder llegar a lo más profundo de una cueva misteriosa. Mi rol en el proyecto fue diseñar las pantallas, los personajes y los niveles; para esto usé tanto Figma como Aseprite.',
   },
   {
     numero: '02',
-    titulo: 'Proyecto 02',
-    imagen: '/images/proyecto-02.jpg',
-    alt: 'Monitor con un tablero de métricas y gráficos',
-    referencia: 'REFERENCIA VISUAL · DATOS',
+    anio: '4TO AÑO - 2025',
+    titulo: 'Sea of the Lost',
+    imagen: '/images/proyecto-sotl.png',
+    alt: 'Menú principal de Sea of the Lost: carteles de madera colgados de cadenas con las opciones Sail, Credits y Exit sobre el mar',
+    descripcion:
+      'Sea of the Lost es un juego pirata hecho en Unity en el cual recorrés el mar con tu barco y le vas haciendo mejoras para derrotar a los distintos enemigos que se presentan. Mi rol en el proyecto fue Arte 3D, para el que tuve que usar Blender.',
   },
   {
     numero: '03',
-    titulo: 'Proyecto 03',
-    imagen: '/images/proyecto-03.png',
-    alt: 'Manos sobre un teclado frente a interfaces holográficas',
-    referencia: 'REFERENCIA VISUAL · TECNOLOGÍA',
+    anio: '5TO AÑO - 2026',
+    titulo: 'TCGCheck',
+    imagen: '/images/proyecto-tcgcheck.png',
+    // En Figma la captura va alineada a la izquierda
+    posicion: 'object-left',
+    alt: 'Landing de TCGCheck: el titular "Cada carta cuenta. Haz que cuente." junto a un celular con la app',
+    descripcion:
+      'TCGCheck es una app mobile que sirve para detectar si cartas de distintas franquicias son verdaderas o falsas a partir de una IA, solamente sacándoles una foto.',
   },
 ];
 ---
 
-<section id="proyectos" class="scroll-mt-4 bg-white">
-  <div class="container-page flex flex-col gap-9 pt-16 pb-14 lg:pt-[72px] lg:pb-16">
-    <SectionIndex number="02" label="SELECCIÓN / PROYECTOS" />
+<section id="proyectos" class="scroll-mt-4 bg-night">
+  <div class="container-page flex flex-col gap-9 pt-16 pb-14 lg:pt-[72px] lg:pb-[85px]">
+    <SectionIndex number="02" label="PROYECTOS" />
 
     <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
-      <h2 class="text-[clamp(40px,4.5vw,64px)] leading-[1.05] font-medium lg:w-[670px]">
-        Ideas que toman forma.
+      <h2 class="min-w-0 flex-1 text-[clamp(40px,4.5vw,64px)] leading-[1.05]">
+        Ideas que toman <span class="text-pink">forma.</span>
       </h2>
-      <div class="flex flex-col gap-2 lg:w-[370px]">
-        <p class="font-mono text-[13px] font-bold">3 PROYECTOS PRODUCIDOS</p>
-        <p class="text-[15px] leading-[1.4] text-muted">
-          Tres espacios reservados para contar el trabajo. Los detalles aún están por completar.
-        </p>
-      </div>
+      <p class="text-[13px] font-bold text-teal lg:w-[370px] lg:shrink-0 lg:pb-2">3 PROYECTOS PRODUCIDOS</p>
     </div>
 
-    <ul class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid gap-x-6 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
       {
-        proyectos.map((p) => (
+        proyectos.map((p, i) => (
           <li class="group flex flex-col">
-            <div class="relative h-[320px] overflow-hidden bg-stone p-5">
+            <div class="relative aspect-[421/237] overflow-hidden bg-surface">
               <img
                 src={p.imagen}
                 alt={p.alt}
                 loading="lazy"
                 decoding="async"
-                class="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                class:list={['absolute inset-0 size-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]', p.posicion]}
               />
-              <span class="relative inline-block bg-paper px-3.5 py-2 font-mono text-sm">{p.numero}</span>
-              <span class="absolute bottom-3 left-3 bg-ink px-3 py-2 font-mono text-[9px] text-white">
-                {p.referencia}
-              </span>
+              {/* En el diseño, el número solo aparece sobre la primera imagen */}
+              {i === 0 && (
+                <span class="absolute top-5 left-5 flex h-[33px] w-11 items-center justify-center bg-surface text-sm font-semibold">
+                  {p.numero}
+                </span>
+              )}
             </div>
-            <div class="flex flex-col gap-[18px] py-6">
-              <p class="label text-muted">DOCUMENTACIÓN PENDIENTE</p>
+            <div class="flex flex-col gap-[18px] pt-[26px]">
+              <p class="label text-mist">{p.anio}</p>
               <div class="flex items-start justify-between gap-4">
-                <h3 class="text-[32px] font-medium">{p.titulo}</h3>
-                <span class="font-mono text-2xl text-muted" aria-hidden="true">
+                <h3 class="text-[32px]">{p.titulo}</h3>
+                <span class="text-2xl text-pink" aria-hidden="true">
                   [+]
                 </span>
               </div>
-              <p class="text-[17px] leading-[1.5] text-muted">
-                Nombre, contexto y proceso por incorporar. Rol, aportes y resultado por documentar.
-              </p>
+              <p class="text-[17px] leading-[1.53]">{p.descripcion}</p>
               <div class="h-px w-full bg-line" />
-              <p class="font-mono text-[11px] text-muted">FICHA POR COMPLETAR / SIN CASO PUBLICADO</p>
+              <p class="text-[11px] text-mist">FICHA POR COMPLETAR / SIN CASO PUBLICADO</p>
             </div>
           </li>
         ))
       }
     </ul>
-
-    <p class="label text-muted">
-      ↳ Imágenes del universo visual personal; no son capturas ni resultados de estos proyectos.
-    </p>
   </div>
 </section>

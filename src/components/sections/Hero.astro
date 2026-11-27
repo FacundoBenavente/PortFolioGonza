@@ -9,49 +9,51 @@ const navLinks = [
   { label: 'Trayectoria', href: '#trayectoria' },
 ];
 
-// Lienzo del collage en Figma: 783 × 445
+// Lienzo del collage en Figma: 783 × 445 (desde x 597, y 364 del frame)
 const collage: CollageItem[] = [
   {
     kind: 'photo',
-    src: '/images/hero-tierra.jpg',
-    alt: 'La Tierra de noche vista desde el espacio, con las luces de las ciudades',
-    left: 16.775,
-    top: 4.598,
+    src: '/images/hero-dashboard.jpg',
+    alt: 'Monitor con un tablero de métricas: gráficos de barras y curvas de rendimiento',
+    left: 16.264,
+    top: 2.575,
     width: 77.267,
     height: 71.236,
     rotate: -2,
+    // Recorte de Figma: imagen al 119% × 140%, corrida hacia abajo
+    recorte: { x: -0.0525, y: -0.3984, w: 1.1942, h: 1.3984 },
   },
   {
     kind: 'photo',
-    src: '/images/hero-portatil.jpg',
-    alt: 'Notebook entreabierta iluminada en la oscuridad',
-    left: 1.522,
-    top: 46.913,
+    src: '/images/hero-hologramas.png',
+    alt: 'Manos sobre un teclado frente a interfaces holográficas',
+    left: 1.011,
+    top: 44.89,
     width: 43.55,
-    height: 52.81,
+    height: 52.809,
     rotate: 3,
   },
-  { kind: 'tape', left: 45.12, top: 0.584, width: 12.771, height: 5.618, rotate: 3, opacity: 0.85 },
   {
     kind: 'chip',
     text: 'DATOS → DECISIONES',
-    cx: 60.723,
-    cy: 76.222,
+    cx: 59.825,
+    cy: 73.951,
     rotate: -2,
-    color: 'cyan',
+    color: 'teal',
+    widthPx: 262,
+    heightPx: 57,
     fontPx: 20,
-    padXPx: 22,
-    padYPx: 17,
+    weight: 600,
   },
-  { kind: 'note', text: 'observar antes de asumir_', left: 49.042, top: 88.764, fontPx: 10 },
+  { kind: 'note', text: 'observar antes de asumir_', left: 48.531, top: 86.742, fontPx: 10 },
 ];
 ---
 
-<header class="bg-stone">
+<header class="bg-night">
   <div class="container-page flex flex-col">
     <!-- Navegación principal -->
     <nav
-      class="flex h-20 items-center justify-between gap-6 border-b border-ink lg:h-24"
+      class="flex h-20 items-center justify-between gap-6 border-b border-line lg:h-24"
       aria-label="Navegación principal"
     >
       <a href="#top" class="text-lg font-bold whitespace-nowrap md:text-xl">Gonzalo Rey Balmaceda</a>
@@ -60,10 +62,7 @@ const collage: CollageItem[] = [
           {
             navLinks.map((link) => (
               <li>
-                <a
-                  href={link.href}
-                  class="font-mono text-xs underline-offset-4 transition-colors hover:text-muted hover:underline"
-                >
+                <a href={link.href} class="text-xs text-mist transition-colors hover:text-snow">
                   {link.label}
                 </a>
               </li>
@@ -72,39 +71,36 @@ const collage: CollageItem[] = [
         </ul>
         <a
           href="#contacto"
-          class="bg-ink px-5 py-3.5 font-mono text-xs whitespace-nowrap text-white transition-colors hover:bg-graphite"
+          class="flex h-[42px] items-center border border-pink bg-surface px-5 text-xs whitespace-nowrap text-pink transition-colors hover:bg-pink hover:text-night"
         >
-          Hablemos ↗
+          Contacto
         </a>
       </div>
     </nav>
 
     <!-- Ficha de apertura -->
-    <div class="label flex flex-wrap justify-between gap-x-6 gap-y-1 pt-7.5 pb-3.5 text-muted">
-      <p>PORTFOLIO PERSONAL / PERFIL EN FORMACIÓN</p>
-      <p>EDICIÓN 2026 — ES</p>
-    </div>
+    <p class="label pt-8 pb-3.5 text-mist">PORTFOLIO PERSONAL / PERFIL EN FORMACIÓN</p>
 
-    <h1 class="text-[clamp(52px,11.5vw,166px)] leading-none font-bold">CURIOSIDAD</h1>
+    <h1 class="text-[clamp(52px,11.5vw,166px)] leading-none font-bold text-teal">CURIOSIDAD</h1>
 
     <!-- Introducción y collage -->
     <div class="flex flex-col gap-11 pt-8 pb-10 lg:flex-row lg:items-start lg:pb-[11px]">
       <div class="flex flex-col gap-6 pt-3 lg:w-[485px] lg:shrink-0">
-        <p class="text-[clamp(36px,4vw,52px)] leading-[1.02] font-medium">
-          Entre la lógica y la imaginación.
+        <p class="text-[clamp(36px,4vw,52px)] leading-[1.02]">
+          Entre la <span class="text-teal">lógica</span> y la <span class="text-pink">imaginación</span>.
         </p>
         <p class="max-w-[430px] text-lg leading-[1.5]">
           Soy Gonzalo. Estoy construyendo un camino entre los datos, el diseño y la programación. Me
           interesa entender cómo funcionan las cosas y explorar cómo podrían ser.
         </p>
-        <div class="flex flex-wrap items-center gap-6">
+        <div class="flex flex-wrap items-center gap-6 pt-1">
           <a
             href="#proyectos"
-            class="bg-cyan px-6 py-[17px] font-mono text-xs font-bold transition-colors hover:bg-ink hover:text-cyan"
+            class="flex h-12 items-center border border-teal bg-surface px-6 text-xs font-bold text-teal transition-colors hover:bg-teal hover:text-night"
           >
             EXPLORAR PROYECTOS ↓
           </a>
-          <p class="label text-muted">SIEMPRE APRENDIENDO</p>
+          <p class="label text-mist">SIEMPRE APRENDIENDO</p>
         </div>
       </div>
 
@@ -113,10 +109,10 @@ const collage: CollageItem[] = [
 
     <!-- Cierre de presentación -->
     <div
-      class="flex min-h-[74px] flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-ink py-4 font-mono text-[11px]"
+      class="flex min-h-[74px] flex-wrap items-center justify-between gap-x-6 gap-y-2 border-t border-line py-4 text-[11px] text-mist"
     >
-      <p class="leading-[1.5] text-muted">ANÁLISIS DE DATOS / DISEÑO UX/UI / 3D / FRONT-END</p>
-      <a href="#sobre-mi" class="hover:underline">DESLIZÁ PARA CONOCERME ↓</a>
+      <p class="label">ANÁLISIS DE DATOS / DISEÑO UX/UI / 3D / FRONT-END</p>
+      <a href="#sobre-mi" class="transition-colors hover:text-snow">DESLIZÁ PARA CONOCERME ↓</a>
     </div>
   </div>
 </header>

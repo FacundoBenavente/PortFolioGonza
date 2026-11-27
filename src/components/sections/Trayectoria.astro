@@ -4,38 +4,37 @@ import SectionIndex from '../SectionIndex.astro';
 const hitos = [
   {
     cifra: '3',
+    color: 'text-teal',
     titulo: 'Cursos terminados',
     detalle: 'Con tecnologías aplicables a la ciencia de datos.',
   },
   {
-    cifra: '+200 h',
+    cifra: '+50 h',
+    color: 'text-pink',
     titulo: 'Estudiando ciencia de datos',
     detalle: 'Tiempo dedicado a aprender y profundizar.',
   },
   {
-    cifra: '9,07',
+    cifra: '8,5',
+    color: 'text-teal',
     titulo: 'De promedio en el secundario',
     detalle: 'Una base académica para seguir explorando.',
   },
 ];
 ---
 
-<section id="trayectoria" class="scroll-mt-4 bg-paper">
+<section id="trayectoria" class="scroll-mt-4 bg-night">
   <div class="container-page flex flex-col gap-12 py-16 lg:py-20">
     <SectionIndex number="04" label="TRAYECTORIA / APRENDIZAJE" />
 
     <div class="flex flex-col gap-14 lg:flex-row lg:gap-20">
       <!-- Presentación de formación -->
       <div class="flex flex-col gap-7 lg:w-[430px] lg:shrink-0">
-        <h2 class="text-[clamp(40px,4.5vw,64px)] leading-[1.04] font-medium">
-          Una base.<br />Muchas<br />preguntas.
+        <h2 class="text-[clamp(40px,4.5vw,64px)] leading-[1.04]">
+          Una base.<br />Muchas<br /><span class="text-pink">preguntas.</span>
         </h2>
-        <p class="text-lg leading-[1.55] text-muted">
+        <p class="text-lg leading-[1.55]">
           Un recorrido en construcción, sostenido por el estudio y el interés por resolver problemas.
-        </p>
-        <p class="label text-muted">
-          FORMACIÓN Y EXPLORACIÓN PERSONAL<br />
-          NO ES UN HISTORIAL LABORAL
         </p>
       </div>
 
@@ -45,18 +44,18 @@ const hitos = [
           {
             hitos.map((h) => (
               <li class="flex flex-col gap-3 border-t border-line py-[26px] sm:flex-row sm:gap-8">
-                <p class="text-[clamp(40px,4vw,54px)] leading-none sm:w-[202px] sm:shrink-0">{h.cifra}</p>
+                <p class:list={['text-[clamp(40px,4vw,54px)] leading-none sm:w-[202px] sm:shrink-0', h.color]}>
+                  {h.cifra}
+                </p>
                 <div class="flex min-w-0 flex-1 flex-col gap-[9px]">
-                  <h3 class="text-[23px] font-medium">{h.titulo}</h3>
-                  <p class="font-mono text-[11px] leading-[1.6] text-muted">{h.detalle}</p>
+                  <h3 class="text-[23px]">{h.titulo}</h3>
+                  <p class="text-[11px] leading-[1.6] text-mist">{h.detalle}</p>
                 </div>
               </li>
             ))
           }
         </ul>
-        <p class="label border-t border-line pt-5 text-muted">
-          Nombres de cursos e instituciones: por incorporar.
-        </p>
+        <p class="label border-t border-line pt-5 text-mist">Escuela Secundaria Técnica ORT</p>
       </div>
     </div>
   </div>
